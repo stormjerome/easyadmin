@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})">
+    <link th:href="@{/plugins/ztree/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div style="margin: 15px;" class="fadeInUp animated">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>添加后台用户</legend>
+    </fieldset>
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-4">
+                <input type="text" name="userName" lay-verify="required" placeholder="请输入用户名" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门</label>
+            <div class="layui-input-4">
+                <input type="text" id="dept"  class="layui-input" readonly>
+                <input type="hidden" id="deptId" name="deptId" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-4">
+                <input type="password" name="password" lay-verify="required" placeholder="请输入密码" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-4">
+                <input type="text" name="nickName" lay-verify="" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-4">
+                <input type="text" name="phone" lay-verify="phone" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-4">
+                <input type="text" name="email" lay-verify="email" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">启用状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="status" lay-filter="status" checked value="1" title="开启">
+                <input type="radio" name="status" lay-filter="status" value="0" title="关闭">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色</label>
+            <div class="layui-input-block">
+                <input type="checkbox" th:each="role:${roles}" name="roleIds[]"  th:value="${role.roleId}" th:disabled="${role.roleId eq 1 || role.status eq 0}" th:title="${role.roleName}" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-4">
+                <textarea name="remark" placeholder="请输入描述" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">LOGO图</label>
+            <input type="hidden" name="thumb_url" id="thumb_url" value="">
+            <div class="layui-input-block">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn layui-btn-primary" id="thumb_img_Btn"><i class="icon icon-upload3"></i>点击上传(尺寸:680*385)</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img" id="thumb_img">
+                        <p id="demoText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" lay-submit="" lay-filter="add-btn">立即提交</button>
+                <a href="javascript:goList();" class="layui-btn layui-btn-primary">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/layout :: bottom-script"></script>
+<script th:inline="javascript">
+    var postUrl = apiRouter.userAdd;
+</script>
+<script th:src="@{/admin/js/user/user.js}" charset="utf-8"></script>
+</body>
+</html>

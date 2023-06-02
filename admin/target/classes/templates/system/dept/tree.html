@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})">
+    <link th:href="@{/plugins/ztree/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="tree-wrapper">
+        <div id="tree" class="ztree treeselect"></div>
+        <input type="hidden" id="deptId" th:value="${info.getDeptId()}">
+        <input type="hidden" id="deptName" th:value="${info.getDeptName()}">
+        <input type="hidden" id="levelPath" th:value="${info.getLevelPath()}">
+        <a href="javascript:;" class="layui-btn layui-btn-sm bottom_right_btn layer_selected"><i class="layui-icon layui-icon-ok"></i>  确定</a>
+    </div>
+    <script th:replace="/common/layout :: bottom-script"></script>
+    <script th:src="@{/plugins/ztree/js/jquery.ztree.all-3.5.js}"></script>
+    <script th:src="@{/admin/js/dept/tree.js}"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "easyadmin",
+      "type": "com.zhxin.core.config.EasyAdminConfig",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "easyadmin.author",
+      "type": "java.lang.String",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    },
+    {
+      "name": "easyadmin.blog",
+      "type": "java.lang.String",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    },
+    {
+      "name": "easyadmin.email",
+      "type": "java.lang.String",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    },
+    {
+      "name": "easyadmin.name",
+      "type": "java.lang.String",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    },
+    {
+      "name": "easyadmin.version",
+      "type": "java.lang.String",
+      "sourceType": "com.zhxin.core.config.EasyAdminConfig"
+    }
+  ],
+  "hints": []
+}

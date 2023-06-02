@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})">
+    <link th:href="@{/plugins/ztree/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div style="margin: 15px;" class="fadeInUp animated">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>编辑后台用户</legend>
+    </fieldset>
+    <form class="layui-form layui-form-pane" th:object="${info}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-4">
+                <input type="text" name="userName" th:field="*{userName}" lay-verify="required" placeholder="请输入用户名" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门</label>
+            <div class="layui-input-4">
+                <input type="text" id="dept" th:field="*{dept.deptName}"  class="layui-input" readonly>
+                <input type="hidden" id="deptId" th:field="*{deptId}" name="deptId" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-4">
+                <input type="text" name="nickName" th:field="*{nickName}" lay-verify="" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-4">
+                <input type="text" name="phone" lay-verify="phone" th:field="*{phone}" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-4">
+                <input type="text" name="email" lay-verify="email" th:field="*{email}" placeholder="请输入昵称" class="layui-input" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">启用状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="status" lay-filter="status" th:checked="*{status eq 1}" value="1" title="开启">
+                <input type="radio" name="status" lay-filter="status" th:checked="*{status eq 0}" value="0" title="关闭">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色</label>
+            <div class="layui-input-block">
+                <input type="checkbox" th:each="role:${roles}" name="roleIds[]"   th:value="${role.roleId}" th:checked="${role.checkedFlag eq 1}" th:disabled="${role.roleId eq 1 || role.status eq 0 }" th:title="${role.roleName}" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-4">
+                <textarea name="remark" placeholder="请输入描述" class="layui-textarea">[[*{remark}]]</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="hidden" name="adminUserId" th:field="*{adminUserId}">
+                <button type="button" class="layui-btn" lay-submit="" lay-filter="add-btn">立即提交</button>
+                <a href="javascript:goList();" class="layui-btn layui-btn-primary">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/layout :: bottom-script"></script>
+<script th:inline="javascript">
+    var postUrl = apiRouter.userEdit;
+</script>
+<script th:src="@{/admin/js/user/user.js}" charset="utf-8"></script>
+</body>
+</html>

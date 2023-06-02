@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})">
+
+</head>
+
+<body>
+<div class="admin-main">
+    <blockquote class="layui-elem-quote">
+        <fieldset class="layui-elem-field">
+            <legend>说明：</legend>
+            <div class="layui-field-box">
+                <p>
+                    EasyAdmin 是一个非前后端分离的后台管理系统的脚手架,基于SpringBoot、Thymeleaf和LayUI，可以帮你快速建立一个后台管理系统模板。
+                </p>
+            </div>
+        </fieldset>
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+        <fieldset class="layui-elem-field">
+            <legend>功能清单：</legend>
+            <div class="layui-field-box">
+                <p>
+                    <span class="layui-badge-dot mr10"></span>用户管理：用户查询、添加用户、修改用户、给用户分配角色
+                </p>
+                <p>
+                    <span class="layui-badge-dot mr10"></span>菜单管理：菜单列表、添加菜单、修改菜单、删除菜单、权限配置、菜单图标设置、菜单排序
+                </p>
+                <p>
+                    <span class="layui-badge-dot mr10"></span>角色管理：角色查询、添加角色、修改角色、删除角色
+                </p>
+                <p>
+                    <span class="layui-badge-dot mr10"></span>数据源监控：druid
+                </p>
+                <p>
+                    <span class="layui-badge-dot mr10"></span>接口swagger文档
+                </p>
+                <p>
+                    <span class="layui-badge-dot mr10"></span>继续补充中...
+                </p>
+            </div>
+        </fieldset>
+    </blockquote>
+    <div class="table-responsive">
+        <table class="layui-table" >
+            <colgroup>
+                <col width="40%">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="text-center" colspan="4">系统信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>网站目录</td>
+                <td th:text="${sysInfo.projectDir}"></td>
+                <td>服务器操作系统</td>
+                <td th:text="${sysInfo.osName}"></td>
+            </tr>
+            <tr>
+                <td>服务器IP</td>
+                <td th:text="${sysInfo.hostIp}"></td>
+                <td>服务器端口</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>JVM名称</td>
+                <td th:text="${sysInfo.jvmName}"></td>
+                <td>运行JDK版本</td>
+                <td th:text="${sysInfo.jdkVersion}"></td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+</body>
+</html>

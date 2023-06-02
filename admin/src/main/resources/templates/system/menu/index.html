@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})"></head>
+<body>
+    <div class="admin-main layui-anim layui-anim-upbit">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>权限管理</legend>
+        </fieldset>
+        <blockquote class="layui-elem-quote">
+            <a href="add" class="layui-btn layui-btn-sm" perm="sys:menu:add"><i class="layui-icon"></i>添加权限</a>
+            <button class="layui-btn layui-btn-warm layui-btn-sm" id="btn-open-all"  >全部展开</button>
+            <button class="layui-btn layui-btn-warm layui-btn-sm" id="btn-close-all"  >全部合并</button>
+        </blockquote>
+        <table class="layui-table" id="list" lay-filter="list"></table>
+    </div>
+    <script type="text/html" id="status">
+        <input type="checkbox" name="status" value="{{d.menuId}}" lay-skin="switch" lay-text="是|否" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+    <script type="text/html" id="is_view">
+        <input type="checkbox" name="isView" value="{{d.menuId}}" lay-skin="switch" lay-text="显示|隐藏" lay-filter="isView" {{ d.isView == 1 ? 'checked' : '' }}>
+    </script>
+    <script type="text/html" id="sort">
+        <input name="{{d.menuId}}" data-id="{{d.menuId}}" class="list_order layui-input" value=" {{d.sort}}" size="10"/>
+    </script>
+    <script type="text/html" id="icon">
+        <span class="icon {{d.icon}}"></span>
+    </script>
+    <script type="text/html" id="action">
+        <a href="/menu/edit/{{d.menuId}}" class="layui-btn layui-btn-xs btn-edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs btn-delete" lay-event="del">删除</a>
+    </script>
+    <script th:replace="/common/layout :: bottom-script"></script>
+    <script th:src="@{/admin/js/menu/index.js}" charset="utf-8"></script>
+</body>
+</html>

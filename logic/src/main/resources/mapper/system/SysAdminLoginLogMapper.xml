@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhxin.logic.system.mapper.SysAdminLoginLogMapper">
+  <resultMap type="SysAdminLoginLog" id="SysAdminLoginLogResult">
+    <result column="log_id" property="logId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+    <result column="login_location" jdbcType="VARCHAR" property="loginLocation" />
+    <result column="user_agent" jdbcType="VARCHAR" property="userAgent" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+  </resultMap>
+
+
+
+  <insert id="insertLog">
+    insert into sys_admin_login_log(user_name, login_ip,login_location,user_agent,login_time) values
+    (
+        #{userName},
+        #{loginIp},
+        #{loginLocation},
+        #{userAgent},
+        sysdate()
+    )
+  </insert>
+
+    <select id="selectLog" parameterType="SysAdminLoginLog" resultMap="SysAdminLoginLogResult">
+        select * from sys_admin_login_log
+        <where>
+            <if test="userName != null and userName != ''">
+                AND user_name like concat('%', #{userName}, '%')
+            </if>
+
+            <if test="beginTime != null and beginTime != ''"><!-- 开始时间检索 -->
+                and date_format(login_time,'%y%m%d') &gt;= date_format(#{beginTime},'%y%m%d')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                and date_format(login_time,'%y%m%d') &lt;= date_format(#{endTime},'%y%m%d')
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/layout :: header(~{::title},~{::link},~{::style})"></head>
+<body>
+<div class="admin-main layui-anim layui-anim-upbit">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>后台用户操作日志</legend>
+    </fieldset>
+    <table class="layui-table" id="list" lay-filter="list"></table>
+</div>
+
+<script th:replace="/common/layout :: bottom-script"></script>
+<script th:src="@{/admin/js/user/operateLog.js}" charset="utf-8"></script>
+</body>
+</html>

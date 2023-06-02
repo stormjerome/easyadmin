@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>后台系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+</head>
+<body class="main-bg">
+<div class="w3l-main">
+    <div class="w3l-left-side pos-relative">
+        <div class="side-info">
+            <div class="logopanel m-b">
+                <h1>EasyAdmin后台系统</h1>
+            </div>
+            <div class="mb15"></div>
+            <ul class="mb15">
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> SpringBoot</li>
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Mybatis</li>
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Redis</li>
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Security</li>
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Thymeleaf</li>
+                <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> LayUI</li>
+            </ul>
+        </div>
+        <div class="side-footer">
+            <div class="pull-left">© 2020 All Rights Reserved. SingleZhang <br></div>
+        </div>
+    </div>
+    <div class="w3l-rigt-side">
+        <div class="wthree-container">
+            <div class="wthree-form">
+                <div class="agileits-2">
+                    <h2>用户登录 / user login</h2>
+                </div>
+                <form action="" method="post">
+                    <div class="w3-user">
+                        <span><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                        <input type="text" name="username" id="username" placeholder="账号" required="">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="w3-psw">
+                        <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                        <input type="password" name="password" id="password" placeholder="密码" required="">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="clear">
+                        <input class="yzm" type="text" name="captcha" id="captcha" placeholder="验证码" required="">
+                        <img class="yzm-img" src="/img/loading.gif" onclick="makeCaptcha()" />
+                    </div>
+                    <div class="signin">
+                        <input type="button" id="login-btn" class="login-btn" value="登录">
+                    </div>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script th:inline="javascript">
+    var uuid = "";
+</script>
+<script type="text/javascript" th:src="@{/js/libs/jquery-2.1.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/plugins/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/myjs/global.js}"></script>
+<script type="text/javascript" th:src="@{/admin/js/login.js}"></script>
+</body>
+</html>
